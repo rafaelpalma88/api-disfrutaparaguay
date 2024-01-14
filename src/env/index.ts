@@ -1,5 +1,13 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 import { z } from "zod";
+
+if (process.env.NODE_ENV === "test") {
+  console.log("node env test");
+  dotenv.config({ path: ".env.test", override: true });
+} else {
+  console.log("node env else");
+  dotenv.config();
+}
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("production"),

@@ -12,7 +12,7 @@
     "dev": "tsx watch src/server.ts",
     "lint": "eslint src --ext .ts --fix",
     "test": "vitest",
-    "build": "tsup src --out-dir /build"
+    "build": "tsup src --out-dir build"
   },
   "keywords": [],
   "author": "",

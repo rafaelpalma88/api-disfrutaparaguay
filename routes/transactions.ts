@@ -49,9 +49,6 @@ export async function transactionsRoutes(app: FastifyInstance): Promise<any> {
     const { title, amount, type } = createTransactionBodySchema.parse(
       request.body,
     );
-    console.log("title", title);
-    console.log("amount", amount);
-    console.log("type", type);
 
     let sessionId = request.cookies.sessionId;
 

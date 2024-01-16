@@ -5,3 +5,4 @@ db/app.db
 
 # Build
 db/*.db
+build

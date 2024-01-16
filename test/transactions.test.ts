@@ -24,7 +24,7 @@ beforeEach(async () => {
 });
 
 describe("transaction routes", () => {
-  test.skip("user can create a new transaction", async () => {
+  test("user can create a new transaction", async () => {
     const response = await supertest(app.server)
       .post("/transactions")
       .send({ title: "New Transaction", amount: 5000, type: "credit" });
@@ -32,7 +32,7 @@ describe("transaction routes", () => {
     expect(response.statusCode).toEqual(201);
   });
 
-  test.skip("user can get transactions list", async () => {
+  test("user can get transactions list", async () => {
     const createTransactionResponse = await supertest(app.server)
       .post("/transactions")
       .send({ title: "New Transaction", amount: 5000, type: "credit" });
@@ -49,7 +49,7 @@ describe("transaction routes", () => {
     ]);
   });
 
-  test.only("user can get an specific transaction", async () => {
+  test("user can get an specific transaction", async () => {
     const createTransactionResponse = await supertest(app.server)
       .post("/transactions")
       .send({ title: "New Transaction", amount: 5000, type: "credit" });
@@ -74,5 +74,32 @@ describe("transaction routes", () => {
     expect(getTransactionResponseByID.body.transaction).toEqual(
       expect.objectContaining({ title: "New Transaction", amount: 5000 }),
     );
+  });
+
+  test("user can get a summary", async () => {
+    const createTransactionResponse = await supertest(app.server)
+      .post("/transactions")
+      .send({ title: "New Transaction", amount: 5000, type: "credit" });
+
+    const cookies = createTransactionResponse.get("Set-Cookie");
+
+    await supertest(app.server)
+      .post("/transactions")
+      .send({ title: "New Transaction", amount: 3000, type: "credit" })
+      .set("Cookie", cookies);
+
+    await supertest(app.server)
+      .post("/transactions")
+      .send({ title: "New Transaction", amount: 200, type: "debit" })
+      .set("Cookie", cookies);
+
+    const summaryResponse = await supertest(app.server)
+      .get("/transactions/summary")
+      .set("Cookie", cookies);
+
+    console.log("summaryResponse", summaryResponse);
+
+    expect(summaryResponse.statusCode).toEqual(200);
+    expect(summaryResponse.body.summary).toEqual({ amount: 7800 });
   });
 });

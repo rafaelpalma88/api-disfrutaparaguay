@@ -8,7 +8,6 @@
     "node": ">= 18"
   },
   "scripts": {
-    "knex": "node --no-warnings --import tsx ./node_modules/.bin/knex",
     "dev": "tsx watch src/server.ts",
     "lint": "eslint src --ext .ts --fix",
     "test": "vitest",

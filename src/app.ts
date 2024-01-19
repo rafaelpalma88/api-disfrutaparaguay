@@ -1,11 +1,21 @@
 import fastify from "fastify";
-import { transactionsRoutes } from "../routes/transactions";
+import * as transactionsRoutesModule from "../routes/transactions";
 import cookie from "@fastify/cookie";
 
 export const app = fastify();
 
-app.register(cookie);
+async function init(): Promise<void> {
+  await app.register(cookie);
 
-app.register(transactionsRoutes, {
-  prefix: "transactions",
-});
+  await app.register(transactionsRoutesModule.transactionsRoutes, {
+    prefix: "transactions",
+  });
+}
+
+init()
+  .then(() => {
+    console.log("tudo ok");
+  })
+  .catch((error) => {
+    console.log(error);
+  });

@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { checkSessionIdExists } from "../src/middlewares/check-session-id-exists";
 
-export async function transactionsRoutes(app: FastifyInstance): Promise<any> {
+async function transactionsRoutes(app: FastifyInstance): Promise<any> {
   app.get(
     "/",
     { preHandler: [checkSessionIdExists] },
@@ -92,3 +92,5 @@ export async function transactionsRoutes(app: FastifyInstance): Promise<any> {
     },
   );
 }
+
+export { transactionsRoutes };

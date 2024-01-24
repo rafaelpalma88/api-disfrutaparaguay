@@ -1,7 +1,7 @@
 import { type FastifyInstance } from "fastify";
 
 async function eventsRoutes(app: FastifyInstance): Promise<any> {
-  const events = [
+  const eventsMock = [
     {
       id: "752aeea9-0859-4128-ac49-14eda92b0276",
       active: true,
@@ -37,7 +37,7 @@ async function eventsRoutes(app: FastifyInstance): Promise<any> {
   ];
 
   app.get("/", async (request, reply) => {
-    return { events };
+    return eventsMock;
     // return await reply.status(201).send();
   });
 

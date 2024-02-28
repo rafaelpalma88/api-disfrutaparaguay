@@ -1,4 +1,5 @@
 import { type FastifyInstance } from "fastify";
+import { z } from "zod";
 
 async function eventsRoutes(app: FastifyInstance): Promise<any> {
   const eventsMock = [
@@ -39,6 +40,21 @@ async function eventsRoutes(app: FastifyInstance): Promise<any> {
   app.get("/", async (request, reply) => {
     return eventsMock;
     // return await reply.status(201).send();
+  });
+
+  app.get("/:id", async (request, reply) => {
+    const getTransactionParamsSchema = z.object({
+      id: z.string().uuid(),
+    });
+    const { id } = getTransactionParamsSchema.parse(request.params);
+
+    const transaction = eventsMock.find((event) => event.id === id);
+
+    // if (transaction == null) {
+    //   reply.status(404).send("Registro não encontrado");
+    // }
+
+    return await reply.status(200).send(transaction);
   });
 
   // app.get("/:id", { preHandler: [checkSessionIdExists] }, async (request) => {

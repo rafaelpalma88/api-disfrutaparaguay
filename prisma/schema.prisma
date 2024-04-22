@@ -16,35 +16,57 @@ model User {
   email         String   @unique
   password_hash String
   created_at    DateTime
+  approved_at   DateTime
+  // colocar aqui qual foi o ID do usuário que aprovou a filiação
+  // gym    Gym    @relation(fields: [gym_id], references: [id])
+  // approved_user_id String
 
-  checkIns CheckIn[]
+  Event Event[]
 
   @@map("users")
 }
 
-model CheckIn {
-  id           String   @id @default(uuid())
-  created_at   DateTime @default(now())
-  is_validated Boolean
+model Event {
+  id          String   @id @default(uuid())
+  created_at  DateTime @default(now())
+  active      Boolean
+  image       String
+  title       String
+  address     String
+  phone       String
+  description String
+  startDate   String
+  endDate     String
+
+  latitude  Decimal
+  longitude Decimal
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
 
-  gym    Gym    @relation(fields: [gym_id], references: [id])
-  gym_id String
-
-  @@map("check_ins")
+  @@map("events")
 }
 
-model Gym {
-  id          String  @id @default(uuid())
-  title       String
-  description String?
-  phone       String?
-  latitude    Decimal
-  longitude   Decimal
+// model CheckIn {
+//   id           String   @id @default(uuid())
+//   created_at   DateTime @default(now())
+//   is_validated Boolean
 
-  checkIns CheckIn[]
+//   gym    Gym    @relation(fields: [gym_id], references: [id])
+//   gym_id String
 
-  @@map("gyms")
-}
+//   @@map("check_ins")
+// }
+
+// model Gym {
+//   id          String  @id @default(uuid())
+//   title       String
+//   description String?
+//   phone       String?
+//   latitude    Decimal
+//   longitude   Decimal
+
+//   checkIns CheckIn[]
+
+//   @@map("gyms")
+// }

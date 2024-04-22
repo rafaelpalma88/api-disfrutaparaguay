@@ -8,7 +8,8 @@
     "node": "20.11.0"
   },
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "start:dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
     "knex": "node --no-warnings --import tsx ./node_modules/knex/bin/cli.js",
     "lint": "eslint src --ext .ts --fix",
     "test": "vitest",

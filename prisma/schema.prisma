@@ -11,17 +11,17 @@ datasource db {
 }
 
 model User {
-  id            String   @id @default(uuid())
+  id            String    @id @default(uuid())
   name          String
-  email         String   @unique
+  email         String    @unique
   password_hash String
-  created_at    DateTime
-  approved_at   DateTime
+  created_at    DateTime  @default(now())
+  approved_at   DateTime?
   // colocar aqui qual foi o ID do usuário que aprovou a filiação
   // gym    Gym    @relation(fields: [gym_id], references: [id])
   // approved_user_id String
 
-  Event Event[]
+  events Event[] @relation(name: "EventParticipants")
 
   @@map("users")
 }
@@ -32,17 +32,16 @@ model Event {
   active      Boolean
   image       String
   title       String
-  address     String
-  phone       String
-  description String
+  address     String?
+  phone       String?
+  description String?
   startDate   String
   endDate     String
 
   latitude  Decimal
   longitude Decimal
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  users User[] @relation(name: "EventParticipants")
 
   @@map("events")
 }

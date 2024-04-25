@@ -24,14 +24,13 @@ export class InMemoryUsersRepository implements UsersRepository {
     return newUser;
   }
 
-  async findByEmail(email: string): Promise<{
-    id: string;
-    name: string;
-    email: string;
-    password_hash: string;
-    created_at: Date;
-    approved_at: Date | null;
-  } | null> {
-    throw new Error("Method not implemented.");
+  async findByEmail(email: string): Promise<User | null> {
+    const user = this.users.find((user) => user.email === email);
+
+    if (!user) {
+      return null;
+    }
+
+    return user;
   }
 }

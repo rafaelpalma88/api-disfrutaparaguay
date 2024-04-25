@@ -24,13 +24,11 @@
     "bcryptjs": "2.4.3",
     "dotenv": "16.3.2",
     "fastify": "4.25.2",
-    "pg": "8.11.3",
     "zod": "3.22.4"
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.6",
     "@types/node": "20.11.5",
-    "@types/supertest": "6.0.2",
     "@typescript-eslint/eslint-plugin": "6.19.0",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
@@ -40,8 +38,6 @@
     "eslint-plugin-promise": "6.1.1",
     "prettier": "3.2.4",
     "prisma": "5.12.1",
-    "sqlite3": "5.1.7",
-    "supertest": "6.3.4",
     "tsup": "8.0.1",
     "tsx": "4.7.0",
     "typescript": "5.3.3",

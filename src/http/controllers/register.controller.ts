@@ -23,10 +23,8 @@ export async function register(
     await registerUseCase.execute({ name, email, password });
   } catch (error) {
     if (error instanceof UserAlreadyExistsError) {
-      return await reply.status(409).send();
+      return await reply.status(409).send({ message: error.message });
     }
-    return await reply.status(500).send(); //TODO: arrumar isso
+    throw error;
   }
-
-  return await reply.status(201).send();
 }

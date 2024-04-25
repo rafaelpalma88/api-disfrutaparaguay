@@ -18,7 +18,6 @@ export class RegisterUseCase {
     email,
     password,
   }: RegisterUseCaseRequest): Promise<void> {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const password_hash = await bcryptjs.hash(password, 6);
 
     const userWithSameEmail = await this.usersRepository.findByEmail(email);

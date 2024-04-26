@@ -27,8 +27,8 @@ model User {
 }
 
 model Event {
-  id          String   @id @default(uuid())
-  created_at  DateTime @default(now())
+  id          String    @id @default(uuid())
+  created_at  DateTime  @default(now())
   active      Boolean
   image       String
   title       String
@@ -37,6 +37,7 @@ model Event {
   description String?
   startDate   String
   endDate     String
+  approved_at DateTime?
 
   latitude  Decimal
   longitude Decimal

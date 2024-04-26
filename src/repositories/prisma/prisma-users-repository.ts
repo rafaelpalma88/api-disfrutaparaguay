@@ -31,4 +31,17 @@ export class PrismaUsersRepository implements UsersRepository {
 
     return userWithSameEmail;
   }
+  async findById(id: string): Promise<User | null> {
+    const userWithSameId = await prisma.user.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    if (!userWithSameId) {
+      return null;
+    }
+
+    return userWithSameId;
+  }
 }

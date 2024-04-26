@@ -6,8 +6,8 @@ API - Disfruta Paraguay
 
 ## RFs (Requisitos funcionais)
 
-- [] Deve ser possível se cadastrar;
-- [] Deve ser possível se autenticar;
+- [x] Deve ser possível se cadastrar;
+- [x] Deve ser possível se autenticar;
 - [] Deve ser possível obter o perfil de um usuário logado;
 - [] Deve ser possível visualizar eventos após fazer login;
 - [] Deve ser possível buscar eventos pelo nome;

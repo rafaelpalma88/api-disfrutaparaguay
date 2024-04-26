@@ -13,7 +13,7 @@ describe("Use Cases: Authenticate", () => {
 
     authenticateUseCase = new AuthenticateUseCase(usersRepository);
   });
-  it("should return a user if login infos are correct", async () => {
+  it("should be able to authenticate", async () => {
     await usersRepository.create({
       name: "John Doe",
       password_hash: await hash("test@123", 6),

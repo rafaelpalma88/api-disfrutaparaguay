@@ -17,6 +17,7 @@ app.setErrorHandler((error, _request, reply) => {
   if (env.NODE_ENV !== "production") {
     console.error(error);
   } else {
+    console.error(error);
     // Log externo para uma ferramenta como DataDog/ New Relic / Sentry etc.
   }
 

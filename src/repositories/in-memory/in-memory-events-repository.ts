@@ -29,6 +29,7 @@ export class InMemoryEventsRepository implements EventsRepository {
       image: "https://github.com/rafaelpalma88.png",
       created_at: new Date(),
       approved_at: null,
+      active: false,
     };
 
     this.events.push(newEvent);

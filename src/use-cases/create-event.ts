@@ -1,3 +1,4 @@
+import { EventsRepository } from "@/repositories/events-repository";
 import type { Event } from "@prisma/client";
 
 interface CreateEventUseCaseRequest {
@@ -37,6 +38,8 @@ export class RegisterUseCase {
       endDate,
       latitude,
       longitude,
+      active: false,
+      image: "xxx.jpg",
     });
 
     return { event };

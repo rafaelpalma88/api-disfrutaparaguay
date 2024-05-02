@@ -25,4 +25,5 @@ export async function register(
     }
     throw error;
   }
+  return reply.status(201).send();
 }

@@ -6,7 +6,7 @@ export default <Environment>{
     console.log("Executou");
 
     return {
-      teardown() {},
+      async teardown() {},
     };
   },
   transformMode: "ssr",

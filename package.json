@@ -1,6 +1,5 @@
 {
   "name": "api-disfrutaparaguay",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +8,7 @@
   },
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
-    "start": "node build/server.cjs",
+    "start": "node build/server.js",
     "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
     "test:install-prisma-environment": "npm link vitest-environment-prisma",
     "lint": "eslint src --ext .ts --fix",
@@ -20,7 +19,7 @@
     "test:e2e:watch": "vitest --dir src/http",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "build": "tsup src --out-dir build --dts"
+    "build": "tsup src --out-dir build"
   },
   "keywords": [],
   "author": "",

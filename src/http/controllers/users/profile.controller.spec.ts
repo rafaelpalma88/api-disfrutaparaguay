@@ -33,8 +33,6 @@ describe("Controller: Profile", () => {
       .set("Authorization", `Bearer ${token}`)
       .send();
 
-    console.log("profileResponse", profileResponse);
-
     expect(profileResponse.statusCode).toEqual(200);
     expect(profileResponse.body.user).toEqual(
       expect.objectContaining({ email: "johndoe6@example.com" }),

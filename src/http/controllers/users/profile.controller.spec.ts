@@ -14,12 +14,12 @@ describe("Controller: Profile", () => {
   it("should be able to get user profile", async () => {
     await request(app.server).post("/users").send({
       name: "John Doe",
-      email: "johndoe6@example.com",
+      email: "johndoe22@example.com",
       password: "123456",
     });
 
     const authResponse = await request(app.server).post("/sessions").send({
-      email: "johndoe6@example.com",
+      email: "johndoe22@example.com",
       password: "123456",
     });
 
@@ -35,7 +35,7 @@ describe("Controller: Profile", () => {
 
     expect(profileResponse.statusCode).toEqual(200);
     expect(profileResponse.body.user).toEqual(
-      expect.objectContaining({ email: "johndoe6@example.com" }),
+      expect.objectContaining({ email: "johndoe22@example.com" }),
     );
   });
 });

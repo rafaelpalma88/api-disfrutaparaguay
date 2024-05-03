@@ -20,7 +20,7 @@
     "test:e2e:watch": "vitest --dir src/http",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build --dts"
   },
   "keywords": [],
   "author": "",

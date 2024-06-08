@@ -4,8 +4,14 @@ import fastifyCookie from "@fastify/cookie";
 import { usersRoutes } from "./http/controllers/users/routes";
 import { ZodError } from "zod";
 import { env } from "./env";
+import cors from "@fastify/cors";
 
 export const app = fastify();
+
+// Registre o plugin fastify-cors
+app.register(cors, {
+  origin: "*", // Permitir solicitações de todas as origens (somente para fins de desenvolvimento)
+});
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,

@@ -8,9 +8,8 @@ import cors from "@fastify/cors";
 
 export const app = fastify();
 
-// Registre o plugin fastify-cors
 app.register(cors, {
-  origin: "*", // Permitir solicitações de todas as origens (somente para fins de desenvolvimento)
+  origin: "*",
 });
 
 app.register(fastifyJwt, {

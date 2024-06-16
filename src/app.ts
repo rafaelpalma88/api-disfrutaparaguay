@@ -5,12 +5,15 @@ import { usersRoutes } from "./http/controllers/users/routes";
 import { ZodError } from "zod";
 import { env } from "./env";
 import cors from "@fastify/cors";
+import fastifyFormBody from "@fastify/formbody";
 
 export const app = fastify();
 
 app.register(cors, {
   origin: "*",
 });
+
+app.register(fastifyFormBody);
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,

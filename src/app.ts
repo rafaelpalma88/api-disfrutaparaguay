@@ -6,6 +6,7 @@ import { ZodError } from "zod";
 import { env } from "./env";
 import cors from "@fastify/cors";
 import fastifyFormBody from "@fastify/formbody";
+import { eventsRoutes } from "./http/controllers/events/routes";
 
 export const app = fastify();
 
@@ -29,7 +30,7 @@ app.register(fastifyJwt, {
 app.register(fastifyCookie);
 
 app.register(usersRoutes);
-// app.register(eventsRoutes);
+app.register(eventsRoutes);
 
 app.setErrorHandler((error, _request, reply) => {
   if (error instanceof ZodError) {

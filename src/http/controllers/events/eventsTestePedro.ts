@@ -3,19 +3,17 @@ import { makeRegisterUseCase } from "@/use-cases/factories/make-register-use-cas
 import { type FastifyReply, type FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function create(
+export async function eventsTestePedro(
   request: FastifyRequest,
   reply: FastifyReply,
 ): Promise<void> {
   // dentro do request devo ter um token valido. (função decorator que vou criar em toda a função)
 
-  const createUserBodySchema = z.object({
-    title: z.string(),
-    address: z.string(),
-  });
+  // const createUserBodySchema = z.object({
+  //   title: z.string(),
+  // });
 
-  const { title } = createUserBodySchema.parse(request.body);
-
+  // const { title } = createUserBodySchema.parse(request.body);
   try {
     // const registerUseCase = makeRegisterUseCase(); // TODO: criar um caso de uso para criação de evento.
     // await registerUseCase.execute({ name, email, password });

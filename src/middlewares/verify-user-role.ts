@@ -1,6 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export function verifyUserRole(roleToVerify: "ADMIN" | "MEMBER") {
+export function verifyUserRole(
+  roleToVerify: "ADMIN" | "MEMBER" | "NOT_APPROVED",
+) {
   return async (request: FastifyRequest, reply: FastifyReply) => {
     const { role } = request.user;
 

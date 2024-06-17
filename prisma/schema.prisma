@@ -21,7 +21,7 @@ model User {
   name          String
   email         String    @unique
   password_hash String
-  role          Role      @default(MEMBER)
+  role          Role      @default(NOT_APPROVED)
   created_at    DateTime  @default(now())
   approved_at   DateTime?
   // colocar aqui qual foi o ID do usuário que aprovou a filiação

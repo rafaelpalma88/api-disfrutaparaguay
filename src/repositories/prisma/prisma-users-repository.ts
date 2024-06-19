@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { User, Prisma } from "@prisma/client";
+import { User, Prisma, $Enums } from "@prisma/client";
 import { UsersRepository } from "../users-repository";
 
 export class PrismaUsersRepository implements UsersRepository {
@@ -43,5 +43,15 @@ export class PrismaUsersRepository implements UsersRepository {
     }
 
     return userWithSameId;
+  }
+
+  async listUsers(): Promise<User[]> {
+    const users = await prisma.user.findMany();
+
+    if (!users) {
+      return [];
+    }
+
+    return users;
   }
 }

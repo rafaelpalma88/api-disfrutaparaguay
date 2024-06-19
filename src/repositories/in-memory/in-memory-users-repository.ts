@@ -1,4 +1,4 @@
-import { type Prisma, type User } from "@prisma/client";
+import { $Enums, type Prisma, type User } from "@prisma/client";
 import { randomUUID } from "crypto";
 import { type UsersRepository } from "../users-repository";
 
@@ -40,5 +40,14 @@ export class InMemoryUsersRepository implements UsersRepository {
     }
 
     return user;
+  }
+  async listUsers(): Promise<User[]> {
+    const users = this.users;
+
+    if (!users) {
+      return [];
+    }
+
+    return users;
   }
 }

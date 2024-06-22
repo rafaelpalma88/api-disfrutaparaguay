@@ -52,6 +52,7 @@ export async function authenticate(
       })
       .send({
         token,
+        user: { ...user, password_hash: undefined },
       });
   } catch (error) {
     if (error instanceof InvalidCredentialsError) {

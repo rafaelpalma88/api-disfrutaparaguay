@@ -16,7 +16,6 @@ export async function usersRoutes(app: FastifyInstance): Promise<void> {
     listUsers,
   );
 
-  // TODO: create route /http /repositories /use-cases
   app.post("/sessions", authenticate);
 
   app.patch("/token/refresh", refresh);

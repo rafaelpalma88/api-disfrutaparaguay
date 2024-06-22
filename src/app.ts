@@ -18,10 +18,11 @@ app.register(fastifyFormBody);
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
-  // cookie: {
-  //   cookieName: "refreshToken",
-  //   signed: false,
-  // }, TODO: verificar posteriormente como trabalhar com token/refresh token, entender melhor como funcionam os cookies do lado do backend
+  cookie: {
+    cookieName: "refreshToken",
+    signed: false,
+  },
+  // TODO: verificar posteriormente como trabalhar com token/refresh token, entender melhor como funcionam os cookies do lado do backend
   sign: {
     expiresIn: "10m",
   },

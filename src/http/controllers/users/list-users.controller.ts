@@ -12,4 +12,6 @@ export async function listUsers(
   const { users } = await listUsersUseCase.execute();
 
   return reply.status(200).send({ users });
+
+  // .send({ user: { ...user, password_hash: undefined } }); TODO: precisamos nao devolver a senha!
 }

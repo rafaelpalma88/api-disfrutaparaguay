@@ -11,7 +11,10 @@ export async function listUsers(
 
   const { users } = await listUsersUseCase.execute();
 
-  return reply.status(200).send({ users });
+  const usersWithoutPassword = users.map((user) => ({
+    ...user,
+    password_hash: undefined,
+  }));
 
-  // .send({ user: { ...user, password_hash: undefined } }); TODO: precisamos nao devolver a senha!
+  return reply.status(200).send(usersWithoutPassword);
 }
